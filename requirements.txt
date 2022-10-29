@@ -1,0 +1,6 @@
+tqdm
+pandas
+numpy
+zarr
+xarray
+preffs @ git+https://github.com/d70-t/preffs@main
