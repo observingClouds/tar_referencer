@@ -5,7 +5,7 @@ One way to circumvent this challenge is to collect all files in a file container
 and create a look-up table of byte ranges where the content of each file is saved within
 the container. Tar-ing zarr files makes it also easy to store and reuse data on tape-archives.
 
-*tar_referencer* creates these look-up tables that can be used with the preffs package.
+*tar_referencer* creates these look-up tables that can be used with the [preffs package](https://github.com/d70-t/preffs).
 
 ## Usage
 
