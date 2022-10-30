@@ -66,7 +66,7 @@ def create_preffs(tar_files, reference_file):
     ar.to_parquet(reference_file)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--tarfiles", nargs="+", help="Tar-files to index")
     parser.add_argument(
@@ -74,3 +74,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     create_preffs(args.tarfiles, args.parquet)
+
+
+if __name__ == "__main__":
+    main()
