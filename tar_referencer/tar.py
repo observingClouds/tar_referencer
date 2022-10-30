@@ -63,6 +63,7 @@ def main():
     parser.add_argument(
         "-s",
         "--maxsize",
+        type=int,
         help="Maximum filesize of a tar file, before a new one is created",
     )
     args = parser.parse_args()
