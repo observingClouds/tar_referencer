@@ -32,6 +32,7 @@ setup(
     entry_points={
         "console_scripts": [
             "tar_referencer=tar_referencer.referencer:main",
+            "tar_creator=tar_referencer.tar:main",
         ],
     },
     install_requires=requirements,
