@@ -20,24 +20,30 @@ The look-up files (parquet reference files) are created with
 tar_referencer -t file.*.tar -p file_index.preffs
 ```
 
-> **Note**
-> Currently `tar_referencer` only supports tar files that are split at the file level.
-> Tar files that are split within the header or data block are not supported.
-> Splitting files with
-> ```
-> tar -cvf - big.tar | split --bytes=32000m --suffix-length=3 --numeric-suffix - part%03d.tar
-> ```
-> does not work.
-> [Splitar](https://github.com/monoid/splitar) has been successfully tested
-> ```
-> splitar -S 32000m big.tar part.tar-
-> ```
-
 If zarr files have been packed into tars and indexed with *tar_referencer* the tars can be opened with:
 ```python
 import xarray as xr
 storage_options={"preffs":{"prefix":/path/to/tar/files/"}}
 ds = xr.open_zarr("preffs::file_index.preffs", storage_options=storage_options)
+```
+
+### Creating tar files
+Technically all sorts of tar files can be referenced. However, *tar_referencer* currently does only supports tar files that are split at the file level. Tar files that are split within the header or data block are not supported.
+> **Warning**
+> This does not work:
+> ```
+> tar -cvf - big.tar | split --bytes=32000m --suffix-length=3 --numeric-suffix - part%03d.tar
+> ```
+
+To generate compatible tar files from zarr files or other directory structures, *tar_referencer* provides `tar_creator`:
+```
+tar_creator -i dataset.zarr -t dataset_part{:03d}.tar -s MAX_SIZE_BYTES
+```
+where `MAX_SIZE_BYTES` is the maximum size of a tar file, before writing further output to an additional archive.
+
+To split already existing tar files, [Splitar](https://github.com/monoid/splitar) has been successfully tested.
+```
+splitar -S 32000m big.tar part.tar-
 ```
 
 ## Tips and tricks
