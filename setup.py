@@ -10,6 +10,8 @@ with open("requirements.txt") as f:
 
 test_requirements = [
     "pytest>=3",
+    "xarray",
+    "zarr",
 ]
 
 
