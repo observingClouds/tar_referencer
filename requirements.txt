@@ -1,6 +1,5 @@
 tqdm
 pandas
 numpy
-zarr
-xarray
+pyarrow
 preffs @ git+https://github.com/d70-t/preffs@main
