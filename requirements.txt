@@ -1,4 +1,5 @@
 tqdm
 pandas
 numpy
+pyarrow
 preffs @ git+https://github.com/d70-t/preffs@main
