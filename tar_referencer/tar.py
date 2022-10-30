@@ -14,7 +14,7 @@ def pack_to_tar(directory, tar_fmt, max_size=np.inf, verbose=False):
         glob.iglob(directory + "**", recursive=True),
         glob.iglob(directory + ".**", recursive=True),
     )
-    tar_file = 0
+    tar_file = 1
     last_file = None
     tar = tarfile.open(tar_fmt.format(tar_file), "w")
 
