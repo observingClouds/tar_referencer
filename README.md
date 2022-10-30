@@ -11,7 +11,7 @@ the container. Tar-ing zarr files makes it also easy to store and reuse data on 
 
 The package can be installed with
 ```
-pip install git+https://github.com/observingClouds/tar_referencer
+pip install git+https://github.com/observingClouds/tar_referencer.git
 ```
 
 The look-up files (parquet reference files) are created with
