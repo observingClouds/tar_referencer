@@ -11,8 +11,8 @@ import numpy as np
 def pack_to_tar(directory, tar_fmt, max_size=np.inf, verbose=False):
     """Pack dataset into tar container"""
     files = itertools.chain(
-        glob.iglob(directory + "**", recursive=True),
-        glob.iglob(directory + ".**", recursive=True),
+        sorted(glob.iglob(directory + ".**", recursive=True)),
+        sorted(glob.iglob(directory + "**", recursive=True)),
     )
     tar_file = 1
     last_file = None
