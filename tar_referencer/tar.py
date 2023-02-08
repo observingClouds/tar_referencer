@@ -8,11 +8,24 @@ import tarfile
 import numpy as np
 
 
+def sorter(x):
+    path_parts = x.split("/")
+
+    def helper(s):
+        if s.isdigit():
+            return f"{int(s):08g}"
+        else:
+            return s
+
+    t = map(helper, path_parts)
+    return tuple(t)
+
+
 def pack_to_tar(directory, tar_fmt, max_size=np.inf, verbose=False):
     """Pack dataset into tar container"""
     files = itertools.chain(
-        sorted(glob.iglob(directory + ".**", recursive=True)),
-        sorted(glob.iglob(directory + "**", recursive=True)),
+        sorted(glob.iglob(directory + ".**", recursive=True), key=sorter),
+        sorted(glob.iglob(directory + "**", recursive=True), key=sorter),
     )
     tar_file = 1
     last_file = None
